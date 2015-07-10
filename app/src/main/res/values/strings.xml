@@ -3,4 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="episode">Episode : %1$s</string>
+    <string name="aired">Aired : %1$s</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>
