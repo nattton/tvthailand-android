@@ -17,10 +17,6 @@ import com.codemobi.android.tvthailand.dao.show.ShowCollectionDao;
  */
 public class FragmentShow extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
     public FragmentShow() {
         super();
     }
@@ -44,12 +40,12 @@ public class FragmentShow extends Fragment {
         // init instance with rootView.findViewById here
         setRetainInstance(true);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvShow);
+        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvShow);
 
-        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new ShowAdapter(getActivity().getApplicationContext(), ShowCollectionDao.MockShowList());
+        RecyclerView.Adapter mAdapter = new ShowAdapter(getActivity().getApplicationContext(), ShowCollectionDao.MockShowList());
         mRecyclerView.setAdapter(mAdapter);
     }
 
