@@ -15,14 +15,14 @@ import com.codemobi.android.tvthailand.dao.show.ShowCollectionDao;
 /**
  * Created by nattapong on 7/10/15 AD.
  */
-public class FragmentShow extends Fragment {
+public class ShowFragment extends Fragment {
 
-    public FragmentShow() {
+    public ShowFragment() {
         super();
     }
 
-    public static FragmentShow newInstance() {
-        FragmentShow fragment = new FragmentShow();
+    public static ShowFragment newInstance() {
+        ShowFragment fragment = new ShowFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

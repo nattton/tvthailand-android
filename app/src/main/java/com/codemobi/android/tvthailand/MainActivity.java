@@ -17,8 +17,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.codemobi.android.tvthailand.fragment.FragmentShow;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.codemobi.android.tvthailand.dao.section.SectionCollectionDao;
+import com.codemobi.android.tvthailand.fragment.CategoryFragment;
+import com.codemobi.android.tvthailand.fragment.ChannelFragment;
+import com.codemobi.android.tvthailand.fragment.ShowFragment;
+import com.codemobi.android.tvthailand.manager.SectionManager;
+import com.codemobi.android.tvthailand.manager.http.HTTPEngine;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +84,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return FragmentShow.newInstance();
+                switch (position) {
+                    case 0:
+                        return CategoryFragment.newInstance();
+                    case 1:
+                        return ChannelFragment.newInstance();
+                    default:
+                        return ShowFragment.newInstance();
+                }
             }
 
             @Override
@@ -112,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
+
+        loadSection();
     }
 
     @Override
@@ -149,5 +166,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadSection() {
+        SectionManager.getInstance().loadData();
+        HTTPEngine.getInstance().getSectionData(new Response.Listener<SectionCollectionDao>() {
+            @Override
+            public void onResponse(SectionCollectionDao response) {
+                SectionManager.getInstance().setData(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "Cannot connect to the internet.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
