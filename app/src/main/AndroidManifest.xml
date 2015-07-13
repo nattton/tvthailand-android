@@ -23,18 +23,23 @@
         </activity>
 
         <activity
+            android:name=".activity.ProgramActivity"
+            android:label="Program" />
+
+        <activity
             android:name="com.codemobi.android.tvthailand.player.RadioPlayerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="TV Thailand Player"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
 
         <!-- Push Service -->
         <service android:name="com.parse.PushService" />

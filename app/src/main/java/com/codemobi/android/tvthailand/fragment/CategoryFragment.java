@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 
 import com.codemobi.android.tvthailand.R;
 import com.codemobi.android.tvthailand.adapter.CategoryAdapter;
-import com.codemobi.android.tvthailand.adapter.ShowAdapter;
-import com.codemobi.android.tvthailand.dao.show.ShowCollectionDao;
 import com.codemobi.android.tvthailand.manager.SectionManager;
 import com.codemobi.android.tvthailand.manager.bus.MainBus;
 import com.squareup.otto.Subscribe;
@@ -47,7 +45,7 @@ public class CategoryFragment extends Fragment {
         // init instance with rootView.findViewById here
         setRetainInstance(true);
 
-        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvShow);
+        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvCategory);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

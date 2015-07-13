@@ -1,6 +1,8 @@
 package com.codemobi.android.tvthailand.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codemobi.android.tvthailand.R;
+import com.codemobi.android.tvthailand.activity.ProgramActivity;
 import com.codemobi.android.tvthailand.dao.section.CategoryItemDao;
 import com.codemobi.android.tvthailand.manager.SectionManager;
 
@@ -36,7 +39,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         @Override
         public void onClick(View v) {
             CategoryItemDao item = (CategoryItemDao)itemView.getTag();
-            Toast.makeText(mContext, item.getTitle(), Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(mContext, ProgramActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt(ProgramActivity.EXTRAS_MODE, ProgramActivity.BY_CATEGORY);
+            bundle.putString(ProgramActivity.EXTRAS_TITLE, item.getTitle());
+            bundle.putString(ProgramActivity.EXTRAS_ID, item.getId());
+            bundle.putString(ProgramActivity.EXTRAS_ICON, item.getThumbnail());
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
         }
     }
 
