@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.codemobi.android.tvthailand.dao.section.SectionCollectionDao;
 import com.codemobi.android.tvthailand.fragment.CategoryFragment;
 import com.codemobi.android.tvthailand.fragment.ChannelFragment;
+import com.codemobi.android.tvthailand.fragment.RadioFragment;
 import com.codemobi.android.tvthailand.fragment.ShowFragment;
 import com.codemobi.android.tvthailand.manager.SectionManager;
 import com.codemobi.android.tvthailand.manager.http.HTTPEngine;
@@ -89,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         return CategoryFragment.newInstance();
                     case 1:
                         return ChannelFragment.newInstance();
+                    case 2:
+                        return RadioFragment.newInstance();
                     default:
-                        return ShowFragment.newInstance();
+                        return RadioFragment.newInstance();
                 }
             }
 

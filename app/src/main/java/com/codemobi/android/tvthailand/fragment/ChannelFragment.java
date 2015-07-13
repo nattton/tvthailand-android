@@ -11,11 +11,16 @@ import android.view.ViewGroup;
 
 import com.codemobi.android.tvthailand.R;
 import com.codemobi.android.tvthailand.adapter.ChannelAdapter;
+import com.codemobi.android.tvthailand.manager.SectionManager;
+import com.codemobi.android.tvthailand.manager.bus.MainBus;
+import com.squareup.otto.Subscribe;
 
 /**
  * Created by nattapong on 7/10/15 AD.
  */
 public class ChannelFragment extends Fragment {
+
+    private RecyclerView.Adapter mAdapter;
 
     public ChannelFragment() {
         super();
@@ -40,28 +45,37 @@ public class ChannelFragment extends Fragment {
         // init instance with rootView.findViewById here
         setRetainInstance(true);
 
-        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvShow);
+        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvChannel);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
-        RecyclerView.Adapter mAdapter = new ChannelAdapter(getActivity().getApplicationContext());
+        mAdapter = new ChannelAdapter(getActivity().getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainBus.getInstance().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MainBus.getInstance().unregister(this);
+    }
+
+    @Subscribe
+    public void onSectionLoaded(SectionManager.EventType eventType) {
+        if (eventType == SectionManager.EventType.Loaded)
+            if (mAdapter != null)
+                mAdapter.notifyDataSetChanged();
     }
 }

@@ -6,11 +6,15 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
 import com.codemobi.android.tvthailand.utils.Contextor;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
+
+import java.util.HashMap;
 
 public class MainApplication extends Application {
     // The following line should be changed to include the correct property id.
@@ -24,6 +28,8 @@ public class MainApplication extends Application {
         OTV_TRACKER, // Tracker used by all ecommerce transactions from a company.
         GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
     }
+
+    HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
 
     public MainApplication() {
         super();
@@ -60,6 +66,19 @@ public class MainApplication extends Application {
 			e.printStackTrace();
 		}
     	
+    }
+
+    public synchronized Tracker getTracker(TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
+
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            Tracker t = (trackerId == TrackerName.APP_TRACKER) ? analytics.newTracker(PROPERTY_ID)
+                    : (trackerId == TrackerName.OTV_TRACKER) ? analytics.newTracker(R.xml.otv_tracker)
+                    : analytics.newTracker(R.xml.global_tracker);
+            mTrackers.put(trackerId, t);
+
+        }
+        return mTrackers.get(trackerId);
     }
     
     public static String getAppVersion() {
