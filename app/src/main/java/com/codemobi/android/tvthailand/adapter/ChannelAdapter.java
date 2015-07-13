@@ -60,7 +60,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ViewHold
         Glide.with(mContext)
                 .load(item.getThumbnail())
                 .centerCrop()
-                .placeholder(R.drawable.ic_cate_empty)
+                .placeholder(R.drawable.ic_tvthailand_120)
                 .crossFade()
                 .into(holder.mThumbnail);
         holder.itemView.setTag(item);

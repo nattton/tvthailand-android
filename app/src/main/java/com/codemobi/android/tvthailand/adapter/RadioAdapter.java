@@ -1,6 +1,8 @@
 package com.codemobi.android.tvthailand.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.codemobi.android.tvthailand.R;
 import com.codemobi.android.tvthailand.dao.section.RadioItemDao;
 import com.codemobi.android.tvthailand.manager.SectionManager;
+import com.codemobi.android.tvthailand.player.RadioPlayerActivity;
 
 /**
  * Created by nattapong on 7/9/15 AD.
@@ -36,7 +39,16 @@ public class RadioAdapter extends RecyclerView.Adapter<RadioAdapter.ViewHolder> 
         @Override
         public void onClick(View v) {
             RadioItemDao item = (RadioItemDao)itemView.getTag();
-            Toast.makeText(mContext, item.getTitle(), Toast.LENGTH_SHORT).show();
+
+            Uri radioUrl = Uri.parse(item.getUrl());
+            Intent intentVideo = new Intent(mContext, RadioPlayerActivity.class);
+            intentVideo.putExtra(Intent.EXTRA_TITLE, item.getTitle());
+
+            intentVideo.putExtra(RadioPlayerActivity.EXTRAS_MEDIA_TYPE, "radio");
+            intentVideo.putExtra(RadioPlayerActivity.EXTRAS_THUMBNAIL_URL, item.getThumbnail());
+
+            intentVideo.setDataAndType(radioUrl, "video/*");
+            mContext.startActivity(intentVideo);
         }
     }
 
