@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class Constant {
 
-    public static final String DEVELOPER_KEY = "AIzaSyAecHtNarrTvvwlb-OjS-wRlqCRFuRUT0o";
+    public static final String DEVELOPER_KEY = "";
     public static final String BASE_URL = "http://tv.makathon.com/api3";
 
     public static final String UserAgentChrome = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36 ";
