@@ -12,7 +12,7 @@ import java.util.Map;
 public class Constant {
 
     public static final String DEVELOPER_KEY = "";
-    public static final String BASE_URL = "http://tv.makathon.com/api2";
+    public static final String BASE_URL = "http://tv.makathon.com/api3";
 
     public static final String UserAgentChrome = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36 ";
     public static final String UserAgentTablet = "Mozilla/5.0 (iPad; CPU OS 7_1_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D201 Safari/9537.53";

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ga_sessionTimeout">300</integer>
+    <bool name="ga_autoActivityTracking">true</bool>
+    <string name="ga_trackingId">UA-22403997-3</string>
+    <integer name="ga_dispatchPeriod">300</integer>
+    <string name="ga_sampleFrequency">50.0</string>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+    
+    <screenName name="com.codemobi.android.tvthailand.MainActivity">Main</screenName>
+    <screenName name="com.codemobi.android.tvthailand.ProgramActivity">Program</screenName>
+    <screenName name="com.codemobi.android.tvthailand.EpisodeActivity">EP</screenName>
+    <screenName name="com.codemobi.android.tvthailand.PartActivity">Part</screenName>
+    <screenName name="com.codemobi.android.tvthailand.SearchProgramActivity">Search</screenName>
+    <screenName name="com.codemobi.android.tvthailand.MoreDetailActivity">MoreDetail</screenName>
+    <screenName name="com.codemobi.android.tvthailand.LargeThumbnailActivity">LargeThumbnail</screenName>
+    <screenName name="com.codemobi.android.tvthailand.ProgramLoaderActivity">ProgramLoader</screenName>
+    <!-- Player Activity -->
+    <screenName name="com.codemobi.android.tvthailand.player.YoutubePlayerViewActivity">YoutubePlayer</screenName>
+    <screenName name="com.codemobi.android.tvthailand.player.VideoPlayerActivity">VideoPlayer</screenName>
+    <screenName name="com.codemobi.android.tvthailand.player.VastPlayerActivity">VastPlayerActivity</screenName>
+    <!-- OTV Activity -->
+    <screenName name="com.codemobi.android.tvthailand.otv.OTVShowActivity">OTVShow</screenName>
+    <screenName name="com.codemobi.android.tvthailand.otv.OTVPartActivity">OTVPart</screenName>
+    
+</resources>

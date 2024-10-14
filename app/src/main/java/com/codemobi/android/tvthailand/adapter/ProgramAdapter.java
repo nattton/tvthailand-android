@@ -10,16 +10,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codemobi.android.tvthailand.R;
-import com.codemobi.android.tvthailand.dao.show.ShowItemDao;
-
-import java.util.List;
+import com.codemobi.android.tvthailand.datasource.Program;
+import com.codemobi.android.tvthailand.datasource.Programs;
 
 /**
  * Created by nattapong on 7/9/15 AD.
  */
-public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder> {
+public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHolder> {
     private Context mContext;
-    private List<ShowItemDao> mShowItemDaoList;
+    private Programs mPrograms;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
@@ -34,28 +33,27 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder> {
         }
     }
 
-    public ShowAdapter(Context context, List<ShowItemDao> showItemDaoList) {
+    public ProgramAdapter(Context context, Programs mPrograms) {
         mContext = context;
-        mShowItemDaoList = showItemDaoList;
+        this.mPrograms = mPrograms;
     }
 
     @Override
-    public ShowAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProgramAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.cardview_show_item, parent, false);
+                .inflate(R.layout.cardview_program_item, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ShowItemDao showItem = mShowItemDaoList.get(position);
-        holder.mTitle.setText(showItem.getTitle());
-        holder.mDescription.setText(showItem.getDescription());
+        Program item = mPrograms.get(position);
+        holder.mTitle.setText(item.getTitle());
+        holder.mDescription.setText(item.getDescription());
         Glide.with(mContext)
-                .load(showItem.getThumbnailURL())
+                .load(item.getThumbnail())
                 .centerCrop()
                 .placeholder(R.mipmap.ic_launcher)
                 .crossFade()
@@ -64,7 +62,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mShowItemDaoList.size();
+        return mPrograms.size();
     }
 
 }

@@ -9,20 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codemobi.android.tvthailand.R;
-import com.codemobi.android.tvthailand.adapter.ShowAdapter;
-import com.codemobi.android.tvthailand.dao.show.ShowCollectionDao;
 
 /**
  * Created by nattapong on 7/10/15 AD.
  */
-public class FragmentShow extends Fragment {
+public class ShowFragment extends Fragment {
 
-    public FragmentShow() {
+    public ShowFragment() {
         super();
     }
 
-    public static FragmentShow newInstance() {
-        FragmentShow fragment = new FragmentShow();
+    public static ShowFragment newInstance() {
+        ShowFragment fragment = new ShowFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -45,8 +43,8 @@ public class FragmentShow extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        RecyclerView.Adapter mAdapter = new ShowAdapter(getActivity().getApplicationContext(), ShowCollectionDao.MockShowList());
-        mRecyclerView.setAdapter(mAdapter);
+//        RecyclerView.Adapter mAdapter = new ShowAdapter(getActivity().getApplicationContext(), ShowCollectionDao.MockShowList());
+//        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override

@@ -2,4 +2,6 @@
 <resources>
     <color name="nav_item_icon_tint_color">#333</color>
     <color name="nav_item_text_color">#333</color>
+
+    <color name="radio_grid_header">#ff33b5e5</color>
 </resources>
